@@ -1,0 +1,3 @@
+variable "isPROD" {
+  default = false
+}
