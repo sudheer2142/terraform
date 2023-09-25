@@ -23,12 +23,10 @@ variable "instance_name_list"{
     default = ["mongodb", "cart","user","cart","web","shipping","dispatch","payment","redis","rabbitmq"]
 }
 
-variable "my_zone_id"
-{
+variable "my_zone_id"{
     default="my hosting zone -repalce "
 }
 
-variable "my_domain"
-{
+variable "my_domain"{
     default="sudheerdevops.online"
 }
