@@ -1,3 +1,5 @@
+
+# this repo /project is to create vpc and subnets & route tables and internet gateway setup and assign the to subnets 
 terraform {
   required_providers {
     aws = {
@@ -7,8 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket   = "roboshop-remote-state"
-    key = "vpc"
+    bucket = "roboshop-remote-state-sp"
+    key = "LockID"
     region = "us-east-1"
     dynamodb_table = "roboshop-locking"
   }

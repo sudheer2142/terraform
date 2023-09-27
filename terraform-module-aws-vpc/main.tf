@@ -33,7 +33,7 @@ count = length(var.private_subnet_cidr)
 vpc_id =  aws_vpc.main.id
 cidr_block = var.private_subnet_cidr[count.index]
 availability_zone = var.azs[count.index]
-tags = merger(
+tags = merge(
   var.common_tags,
   {
     Name = var.private_subnet_names[count.index]
@@ -46,7 +46,7 @@ count = length(var.database_subnet_cidr)
 vpc_id =  aws_vpc.main.id
 cidr_block = var.database_subnet_cidr[count.index]
 availability_zone = var.azs[count.index]
-tags = merger(
+tags = merge(
   var.common_tags,
   {
     Name = var.database_subnet_names[count.index]
@@ -77,7 +77,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
   tags = merge(
     var.common_tags,
-    var.public_route_table_tags
+    var.private_route_table_tags
   )
 }
 # associate public route table with public subnets
@@ -89,14 +89,6 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.main.id
-
-  tags = merge(
-    var.common_tags,
-    var.private_route_table_tags
-  )
-}
 
 resource "aws_route_table_association" "private" {
   count = length(var.private_subnet_cidr)
