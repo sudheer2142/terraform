@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket   = "roboshop-remote-state-sp"
-    key = "vpn"
+    bucket   = "roboshop-remote-state-new"
+    key = "LockID"
     region = "us-east-1"
-    dynamodb_table = "roboshop-locking"
+    dynamodb_table = "roboshop-locking-new"
   }
 }
 
